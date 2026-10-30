@@ -109,6 +109,9 @@ export default {
                         Achieved the record on the level that is listed on the site - please check the level ID before you submit a record
                     </p>
                     <p>
+                        Level must be between 1 second and 29 seconds long
+                    </p>
+                    <p>
                         Have either source audio or clicks/taps in the video. Edited audio only does not count
                     </p>
                     <p>
