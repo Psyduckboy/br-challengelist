@@ -118,6 +118,9 @@ export default {
                         The recording must have a previous attempt and entire death animation shown before the completion, unless the completion is on the first attempt. Everyplay records are exempt from this
                     </p>
                     <p>
+                        Must have sufficient amounts of brainrot, mod team accepts levels that have enough brainrot
+                     </p>
+                    <p>
                         The recording must also show the player hit the endwall, or the completion will be invalidated.
                     </p>
                     <p>
