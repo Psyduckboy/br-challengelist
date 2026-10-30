@@ -6,18 +6,18 @@
     },
     {
         "role": "admin",
-        "name": "None",
+        "name": "None"
     },
     {
         "role": "helper",
-        "name": "None",
+        "name": "None"
     },
     {
         "role": "trial",
-        "name": "None",
+        "name": "None"
     },
     {
         "role": "dev",
-        "name": "None",
+        "name": "None"
     }
 ]
