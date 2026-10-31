@@ -51,8 +51,8 @@ export default {
                             <p>{{ level.id }}</p>
                         </li>
                         <li>
-                            <div class="type-title-sm">Length</div>
-                            <p>{{ level.length || '67 seconds' }}</p>
+                            <div class="type-title-sm">Initial Placement</div>
+                            <p>{{ level.initial || 'Not Available' }}</p>
                         </li>
                     </ul>
                     <h2>Records</h2>
