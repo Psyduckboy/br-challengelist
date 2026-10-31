@@ -6,6 +6,7 @@
     "verifier": "bean1e",
     "verification": "https://youtu.be/NldoF9HJ5Fc",
     "percentToQualify": 100,
+    "initial": "#2",
     "records": [
     ]
 }
