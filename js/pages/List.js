@@ -87,7 +87,7 @@ export default {
                     </div>
                     <div class="og">
                         <p class="type-label-md">Website layout made by <a href="https://tsl.pages.dev/" target="_blank">TheShittyList</a></p>
-                       <p class="type-label-md" style="margin-top: 12px;">Inspiration from <a href="https://br-list.pages.dev" target="_blank">The Brainrot List</a></p>
+                      <p class="type-label-md">Inspiration from <a href="https://br-list.pages.dev/" target="_blank">TheShittyList</a>and<a href="https://challengelist.gd" target="_blank">GD Spam Challenge List</a></p>
                     </div>
                     <template v-if="editors">
                         <h3>List Editors</h3>
