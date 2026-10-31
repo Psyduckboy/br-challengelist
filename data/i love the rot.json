@@ -7,5 +7,11 @@
     "verification": "https://youtu.be/a8MPVvrN1aw",
     "percentToQualify": 100,
     "records": [
+        {
+            "user": "bean1e",
+            "link": "https://youtu.be/AUya4OFBd64",
+            "percent": 100,
+            "hz": 240
+        }
     ]
 }
