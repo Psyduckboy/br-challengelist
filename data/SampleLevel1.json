@@ -8,5 +8,12 @@
     "percentToQualify": 100,
     "initial": "#1",
     "records": [
+        {
+            "user": "wPoop67",
+            "link": "https://youtu.be/vdGEj6G3aPs",
+            "percent": 100,
+            "fps": 60,
+            "mobile": true
+        }
     ]
 }
