@@ -101,7 +101,7 @@ export default {
                     </template>
                     <h3>Submission Requirements</h3>
                     <p>
-                        Achieved the record without using hacks (CBF/CBS, FPS bypass allowed)
+                        Achieved the record without using hacks (CBF/CBS, FPS bypass allowed anywhere between 30-720 FPS)
                     </p>
                     <p>
                         Must show cheat indicator, if using a mod menu
