@@ -77,7 +77,7 @@ export default {
                     </table>
                 </div>
                 <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
-                    <p>(ノಠ益ಠ)ノ彡┻━┻</p>
+                    <p>breh</p>
                 </div>
             </div>
             <div class="meta-container">
@@ -101,37 +101,37 @@ export default {
                     </template>
                     <h3>Submission Requirements</h3>
                     <p>
-                        Achieved the record without using hacks (CBF/CBS, FPS bypass allowed anywhere between 30-720 FPS)
+                        achieved the record without using hacks (CBF/CBS, FPS bypass allowed anywhere between 30-720 FPS)
                     </p>
                     <p>
-                        Must show cheat indicator, if using a mod menu
+                        must show cheat indicator, if using a mod menu
                     </p>
                     <p>
-                        Achieved the record on the level that is listed on the site - please check the level ID before you submit a record
+                        achieved the record on the level that is listed on the site - please check the level ID before you submit a record
                     </p>
                     <p>
-                        Level must be between 1 second and 29 seconds long
+                        level must be up to 29 seconds long
                     </p>
                     <p>
-                        Have either source audio or clicks/taps in the video. Edited audio only does not count
+                        must have audible or clicks/taps in the video. edited audio only does not count
                     </p>
                     <p>
-                        The recording must have a previous attempt and entire death animation shown before the completion, unless the completion is on the first attempt. Everyplay records are exempt from this
+                        the recording must have a previous attempt and entire death animation shown before the completion, unless the completion is on the first attempt. everyplay records are exempt from this
                     </p>
                     <p>
-                        Must have sufficient amounts of brainrot, mod team accepts levels that have enough brainrot
-                     </p>
-                    <p>
-                        The recording must also show the player hit the endwall, or the completion will be invalidated.
+                        must have sufficient amounts of brainrot, mod team accepts levels that have enough brainrot
                     </p>
                     <p>
-                        Not recommended to use secret routes or bug routes
+                        the recording must also show the player hit the endwall, or the completion will be invalidated.
                     </p>
                     <p>
-                        Do not use easy modes, only a record of the unmodified level qualifies
+                        not recommended to use secret routes or bug routes
                     </p>
                     <p>
-                        Once a level falls into The Basement, records will stop being accepted for the level
+                        do not use easy modes, only a record of the unmodified level qualifies
+                    </p>
+                    <p>
+                        once a level falls into The Basement, records will stop being accepted for the level
                     </p>
                 </div>
             </div>
