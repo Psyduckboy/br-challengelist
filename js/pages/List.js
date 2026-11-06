@@ -114,49 +114,29 @@ export default {
                         </ol>
                     </template>
                     <h3>Submission Requirements</h3>
-                    <p>
-                        achieved the record without using hacks (CBF/CBS, FPS bypass allowed anywhere between 30-720 FPS)
-                    </p>
-                    <br>
-                    <p>
-                        must show cheat indicator, if using a mod menu
-                    </p>
-                    <br>
-                    <p>
-                        achieved the record on the level that is listed on the site - please check the level ID before you submit a record
-                    </p>
-                    <br>
-                    <p>
-                        level must be up to 29 seconds long
-                    </p>
-                    <br>
-                    <p>
-                        must have audible or clicks/taps in the video. edited audio only does not count
-                    </p>
-                    <br>
-                    <p>
-                        the recording must have a previous attempt and entire death animation shown before the completion, unless the completion is on the first attempt. everyplay records are exempt from this
-                    </p>
-                    <br>
-                    <p>
-                        must have sufficient amounts of brainrot, mod team accepts levels that have enough brainrot
-                    </p>
-                    <br>
-                    <p>
-                        the recording must also show the player hit the endwall, or the completion will be invalidated.
-                    </p>
-                    <br>
-                    <p>
-                        not recommended to use secret routes or bug routes
-                    </p>
-                    <br>
-                    <p>
-                        do not use easy modes, only a record of the unmodified level qualifies
-                    </p>
-                    <br>
-                    <p>
-                        once a level falls into The Basement, records will stop being accepted for the level
-                    </p>
+
+                    <div class="requirements">
+                    <p>achieved the record without using hacks (CBF/CBS, FPS bypass allowed anywhere between 30-720 FPS)</p>
+
+                    <p>must show cheat indicator, if using a mod menu</p>
+
+                    <p>achieved the record on the level that is listed on the site - please check the level ID before you submit a record</p>
+
+                    <p>level must be up to 29 seconds long</p>
+
+                    <p>must have audible or clicks/taps in the video. edited audio only does not count</p>
+
+                    <p>the recording must have a previous attempt and entire death animation shown before the completion, unless the completion is on the first attempt. everyplay records are exempt from this</p>
+
+                    <p>must have sufficient amounts of brainrot, mod team accepts levels that have enough brainrot</p>
+
+                    <p>the recording must also show the player hit the endwall, or the completion will be invalidated.</p>
+
+                    <p>not recommended to use secret routes or bug routes</p>
+
+                    <p>do not use easy modes, only a record of the unmodified level qualifies</p>
+
+                    <p>once a level falls into The Basement, records will stop being accepted for the level</p>
                 </div>
             </div>
         </main>
