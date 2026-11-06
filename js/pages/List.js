@@ -1,7 +1,7 @@
 import { store } from "../main.js";
 import { embed } from "../util.js";
 import { score } from "../score.js";
-import { fetchChangelog, fetchEditors, fetchList, fetchdailylul } from "../content.js";
+import { fetchEditors, fetchList } from "../content.js";
 
 import Spinner from "../components/Spinner.js";
 import LevelAuthors from "../components/List/LevelAuthors.js";
@@ -78,30 +78,15 @@ export default {
                     </table>
                 </div>
                 <div v-else-if="!selected" class="level" style="height: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">
-                    <h2>Welcome to the 30 FPS Spam Challenge List!</h2>
+                    <h2>Welcome to the rlly cool List!</h2>
                     <p>Click the levels on the left side to see information about them!</p>
                     <p>For more information about the submission rules check the right side!</p>
-                    <h2>le daily</h2>
-                    <p>{{ leDaily[0][0].name }} ({{ leDaily[0][0].id }})</p>
+
                     <button class="btn" @click="selected = Math.ceil(Math.random() * list.length)">
                         <span class="type-label-lg">I'm feeling lucky</span>
                     </button>
-                    <h2>Changelog</h2>
-                    <main style="display: flex; flex-direction: column; align-items: left; gap: 24px; text-align: left; overflow: hidden; overflow-y: auto; max-height: 300px; width: 700px; border: 3px solid var(--color-primary); border-radius: 5px;">
-                        <div style="display: flex; flex-direction: column; align-items: left; gap: 24px; overflow: visible; margin-left: 10px; margin-top: 12px">
-                            <ul style="list-style-type: disc; padding-left: 2rem">
-                                <template v-for="change in changelog">
-                                    <h2 v-if="change.date" style="margin: 1rem; margin-left: -1rem; color: var(--accent);">{{ change.date }}</h2>
-                                    <li v-if="change.action == 'a'" class="cl" style="margin: 0; font-family: 'Lexend Deca', sans-serif"><clw>{{ change.levelname }}</clw> has been placed at <clw>#{{ change.position }}</clw>, above <clw>{{ change.above }}</clw> and below <clw>{{ change.below }}</clw></li>
-                                    <li v-if="change.action == 's'" class="cl" style="margin: 0; font-family: 'Lexend Deca', sans-serif"><clw>{{ change.levelname }}</clw> and <clw>{{ change.swapped }}</clw> have been swapped, with <clw>{{ change.levelname }}</clw> now sitting above at <clw>#{{ change.position }}</clw></li>
-                                    <li v-if="change.action == 'm'" class="cl" style="margin: 0; font-family: 'Lexend Deca', sans-serif"><clw>{{ change.levelname }}</clw> has been raised from <clw>#{{ change.oldposition }}</clw> to <clw>#{{ change.position }}</clw>, above <clw>{{ change.above }}</clw> and below <clw>{{ change.below }}</clw></li>
-                                    <li v-if="change.action == 'l'" class="cl" style="margin: 0; font-family: 'Lexend Deca', sans-serif"><clw>{{ change.levelname }}</clw> has been lowered from <clw>#{{ change.oldposition }}</clw> to <clw>#{{ change.position }}</clw>, above <clw>{{ change.above }}</clw> and below <clw>{{ change.below }}</clw></li>
-                                    <li v-if="change.action == 'd'" class="cl" style="margin: 0; font-family: 'Lexend Deca', sans-serif"><clw>{{ change.levelname }}</clw> has been removed</li>
-                                </template>
-                            </ul>
-                        </div>
-                        <h3 style="text-align: center;" v-if="!changelog">Nothing here yet...</h3>  
-                    </main>
+                    
+
                 </div>
                 <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
                     <p>Error! (If this error doesn't go away after some time, please contact staff)</p>
@@ -213,12 +198,8 @@ export default {
         // Hide loading spinner
         this.list = await fetchList();
         this.editors = await fetchEditors();
-        this.changelog = await fetchChangelog();
-        this.leDaily = await fetchdailylul();
-        if (Math.floor(Math.random() * 100) == 12) {
-            localStorage.setItem('purple', "true");
-        }
-
+        
+          
         // Error handling
         if (!this.list) {
             this.errors = [
