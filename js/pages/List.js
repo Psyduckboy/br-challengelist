@@ -56,7 +56,7 @@ export default {
                         </li>
                         <li>
                             <div class="type-title-sm">Initial Placement</div>
-                            <p>{{ level.enjoyment || 'N/A' }}</p>
+                            <p>{{ level.initial || 'N/A' }}</p>
                         </li>
                     </ul>
                     <h2>Records</h2>
