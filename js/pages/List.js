@@ -78,7 +78,7 @@ export default {
                     </table>
                 </div>
                 <div v-else-if="!selected" class="level" style="height: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">
-                    <h2>Welcome to the rlly cool List!</h2>
+                    <h2>Welcome to the Brainrot Challenge List!</h2>
                     <p>Click the levels on the left side to see information about them!</p>
                     <p>For more information about the submission rules check the right side!</p>
 
@@ -97,11 +97,13 @@ export default {
                     <div class="errors" v-show="errors.length > 0">
                         <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
-                    <div class="og">
-                        <p class="type-label-md">Website layout made by <a href="https://tsl.pages.dev/" target="_blank">The Shitty List</a></p>
-                        <br>
-                        <p class="type-label-md">Certain features implemented by <a href="https://sgdlist.pages.dev/" target="_blank">The SGD List</a></p>
-                    </div>
+                   <div class="og">
+    <p class="type-label-md">Website layout made by <a href="https://tsl.pages.dev/" target="_blank">The Shitty List</a></p>
+
+    <p class="type-label-md">Certain features implemented by <a href="https://sgdlist.pages.dev/" target="_blank">The SGD List</a></p>
+
+    <p class="type-label-md">Inspired by <a href="https://challengelist.gd/challenges" target="_blank">idk</a></p>
+    <p class="type-label-md">Also inspired by <a href="https://br-list.pages.dev" target="_blank">brimbrot</a></p></div>
                     <template v-if="editors">
                         <h3>List Editors</h3>
                         <ol class="editors">
