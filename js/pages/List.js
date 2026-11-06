@@ -98,12 +98,11 @@ export default {
                         <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
                    <div class="og">
-    <p class="type-label-md">Website layout made by <a href="https://tsl.pages.dev/" target="_blank">The Shitty List</a></p>
-
-    <p class="type-label-md">Certain features implemented by <a href="https://sgdlist.pages.dev/" target="_blank">The SGD List</a></p>
-
-    <p class="type-label-md">Inspired by <a href="https://challengelist.gd/challenges" target="_blank">idk</a></p>
-    <p class="type-label-md">Also inspired by <a href="https://br-list.pages.dev" target="_blank">brimbrot</a></p></div>
+                        <p class="type-label-md">Website layout made by <a href="https://tsl.pages.dev/" target="_blank">The Shitty List</a></p>
+                        <br>
+                        <p class="type-label-md">Certain features implemented by <a href="https://sgdlist.pages.dev/" target="_blank">The SGD List</a></p>
+                        <br>
+                        <p class="type-label-md">Inspired by <a href="https://challengelist.gd/challenges/" target="_blank">The Challenge List</a> and <a href="https://br-list.pages.dev" target="_blank">The Brainrot List</a></p>
                     <template v-if="editors">
                         <h3>List Editors</h3>
                         <ol class="editors">
