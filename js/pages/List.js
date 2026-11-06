@@ -1,7 +1,7 @@
 import { store } from "../main.js";
 import { embed } from "../util.js";
 import { score } from "../score.js";
-import { fetchEditors, fetchList } from "../content.js";
+import { fetchChangelog, fetchEditors, fetchList, fetchdailylul } from "../content.js";
 
 import Spinner from "../components/Spinner.js";
 import LevelAuthors from "../components/List/LevelAuthors.js";
@@ -22,22 +22,26 @@ export default {
         </main>
         <main v-else class="page-list">
             <div class="list-container">
-                <table class="list" v-if="list">
-                    <tr v-for="([level, err], i) in list">
+            <input v-model="searchQuery" placeholder="Input text to Filter! here..." class="btn" type="text" id="filterForLevelName" style="width: 80%; margin-bottom: 0.5em;">   
+                <table class="list" v-if="list && list.length">
+                    <tr v-for="(item, i) in filteredListDisplay" :key="item.originalIndex">
                         <td class="rank">
-                            <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
+                            <p v-if="item.originalIndex + 1 <= 150" class="type-label-lg">#{{ item.originalIndex + 1 }}</p>
                             <p v-else class="type-label-lg">Legacy</p>
                         </td>
-                        <td class="level" :class="{ 'active': selected == i, 'error': !level }">
-                            <button @click="selected = i">
-                                <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
+                        <td class="level" :class="{ 'active': selected == item.originalIndex, 'error': !item.level }">
+                            <button @click="selected = item.originalIndex">
+                                <span class="type-label-lg">{{ item.level?.name || \`Error (\${err}.json)\` }}</span>
                             </button>
                         </td>
                     </tr>
                 </table>
+                <p v-if="list && list.length > 0 && filteredListDisplay && filteredListDisplay.length === 0" class="type-body-lg">
+                    No levels found matching your search.
+                </p>
             </div>
             <div class="level-container">
-                <div class="level" v-if="level">
+                <div class="level" v-if="level || selected != null">
                     <h1>{{ level.name }}</h1>
                     <LevelAuthors :author="level.author" :creators="level.creators" :verifier="level.verifier"></LevelAuthors>
                     <iframe class="video" id="videoframe" :src="video" frameborder="0"></iframe>
@@ -51,8 +55,8 @@ export default {
                             <p>{{ level.id }}</p>
                         </li>
                         <li>
-                            <div class="type-title-sm">Initial Placement</div>
-                            <p>{{ level.initial || 'Not Available' }}</p>
+                            <div class="type-title-sm">Length</div>
+                            <p>{{ level.enjoyment || 'None (0)' }}</p>
                         </li>
                     </ul>
                     <h2>Records</h2>
@@ -70,14 +74,37 @@ export default {
                             <td class="mobile">
                                 <img v-if="record.mobile" :src="\`/assets/phone-landscape\${store.dark ? '-dark' : ''}.svg\`" alt="Mobile">
                             </td>
-                            <td class="fps">
-                                <p>{{ record.fps }}FPS</p>
-                            </td>
                         </tr>
                     </table>
                 </div>
+                <div v-else-if="!selected" class="level" style="height: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">
+                    <h2>Welcome to the 30 FPS Spam Challenge List!</h2>
+                    <p>Click the levels on the left side to see information about them!</p>
+                    <p>For more information about the submission rules check the right side!</p>
+                    <h2>le daily</h2>
+                    <p>{{ leDaily[0][0].name }} ({{ leDaily[0][0].id }})</p>
+                    <button class="btn" @click="selected = Math.ceil(Math.random() * list.length)">
+                        <span class="type-label-lg">I'm feeling lucky</span>
+                    </button>
+                    <h2>Changelog</h2>
+                    <main style="display: flex; flex-direction: column; align-items: left; gap: 24px; text-align: left; overflow: hidden; overflow-y: auto; max-height: 300px; width: 700px; border: 3px solid var(--color-primary); border-radius: 5px;">
+                        <div style="display: flex; flex-direction: column; align-items: left; gap: 24px; overflow: visible; margin-left: 10px; margin-top: 12px">
+                            <ul style="list-style-type: disc; padding-left: 2rem">
+                                <template v-for="change in changelog">
+                                    <h2 v-if="change.date" style="margin: 1rem; margin-left: -1rem; color: var(--accent);">{{ change.date }}</h2>
+                                    <li v-if="change.action == 'a'" class="cl" style="margin: 0; font-family: 'Lexend Deca', sans-serif"><clw>{{ change.levelname }}</clw> has been placed at <clw>#{{ change.position }}</clw>, above <clw>{{ change.above }}</clw> and below <clw>{{ change.below }}</clw></li>
+                                    <li v-if="change.action == 's'" class="cl" style="margin: 0; font-family: 'Lexend Deca', sans-serif"><clw>{{ change.levelname }}</clw> and <clw>{{ change.swapped }}</clw> have been swapped, with <clw>{{ change.levelname }}</clw> now sitting above at <clw>#{{ change.position }}</clw></li>
+                                    <li v-if="change.action == 'm'" class="cl" style="margin: 0; font-family: 'Lexend Deca', sans-serif"><clw>{{ change.levelname }}</clw> has been raised from <clw>#{{ change.oldposition }}</clw> to <clw>#{{ change.position }}</clw>, above <clw>{{ change.above }}</clw> and below <clw>{{ change.below }}</clw></li>
+                                    <li v-if="change.action == 'l'" class="cl" style="margin: 0; font-family: 'Lexend Deca', sans-serif"><clw>{{ change.levelname }}</clw> has been lowered from <clw>#{{ change.oldposition }}</clw> to <clw>#{{ change.position }}</clw>, above <clw>{{ change.above }}</clw> and below <clw>{{ change.below }}</clw></li>
+                                    <li v-if="change.action == 'd'" class="cl" style="margin: 0; font-family: 'Lexend Deca', sans-serif"><clw>{{ change.levelname }}</clw> has been removed</li>
+                                </template>
+                            </ul>
+                        </div>
+                        <h3 style="text-align: center;" v-if="!changelog">Nothing here yet...</h3>  
+                    </main>
+                </div>
                 <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
-                    <p>breh</p>
+                    <p>Error! (If this error doesn't go away after some time, please contact staff)</p>
                 </div>
             </div>
             <div class="meta-container">
@@ -86,8 +113,9 @@ export default {
                         <p class="error" v-for="error of errors">{{ error }}</p>
                     </div>
                     <div class="og">
-                        <p class="type-label-md">Website layout made by <a href="https://tsl.pages.dev/" target="_blank">TheShittyList</a></p>
-                     <p class="type-label-md" style="margin-top: 12px;">Inspiration from <a href="https://br-list.pages.dev" target="_blank">The Brainrot List</a> and <a href="https://challengelist.gd/challenges/" target="_blank">The Challenge List</a></p>
+                        <p class="type-label-md">Website layout made by <a href="https://tsl.pages.dev/" target="_blank">The Shitty List</a></p>
+                        <br>
+                        <p class="type-label-md">Certain features implemented by <a href="https://sgdlist.pages.dev/" target="_blank">The SGD List</a></p>
                     </div>
                     <template v-if="editors">
                         <h3>List Editors</h3>
@@ -101,37 +129,44 @@ export default {
                     </template>
                     <h3>Submission Requirements</h3>
                     <p>
-                        achieved the record without using hacks (CBF/CBS, FPS bypass allowed anywhere between 30-720 FPS)
+                        Your level <strong>must</strong> be under 30 seconds.
                     </p>
                     <p>
-                        must show cheat indicator, if using a mod menu
+                        Level must be harder than the level at the lowest spot on the list.
                     </p>
                     <p>
-                        achieved the record on the level that is listed on the site - please check the level ID before you submit a record
+                        No inappropriate levels, as this includes NSFW levels/videos.
                     </p>
                     <p>
-                        level must be up to 29 seconds long
+                       Levels verified/beat with a cps cap will be placed separately.
                     </p>
                     <p>
-                        must have audible or clicks/taps in the video. edited audio only does not count
+                        Levels verified/beat with a method outside alternating will be placed separately.
                     </p>
                     <p>
-                        the recording must have a previous attempt and entire death animation shown before the completion, unless the completion is on the first attempt. everyplay records are exempt from this
+                        Secret ways are <strong>absolutely</strong> prohibited.
                     </p>
                     <p>
-                        must have sufficient amounts of brainrot, mod team accepts levels that have enough brainrot
+                        Levels have to be 30fps Minimum cps is 10.
                     </p>
                     <p>
-                        the recording must also show the player hit the endwall, or the completion will be invalidated.
+                        The difficulty must be spam.
                     </p>
                     <p>
-                        not recommended to use secret routes or bug routes
+                        Noclip is allowed as long as you have 0 deaths or 100% Accuracy.
                     </p>
                     <p>
-                        do not use easy modes, only a record of the unmodified level qualifies
+                        Clicks must be heard. Click Sounds aren't allowed, or medal overlay is allowed as well if u dont have a mic.
                     </p>
                     <p>
-                        once a level falls into The Basement, records will stop being accepted for the level
+We are not accepting Layouts as verifications, Effort on yours levels
+                   </p>
+                    <p>
+
+                        You have to be on the latest version of Geometry Dash in order to get your completions/verifications accepted.
+                    </p>
+                      <p>
+                        When submitting if you submit more than one level at a time it is prefered that you upload in a compilation
                     </p>
                 </div>
             </div>
@@ -141,14 +176,19 @@ export default {
         list: [],
         editors: [],
         loading: true,
-        selected: 0,
+        selected: null,
         errors: [],
         roleIconMap,
+        searchQuery: '',
         store
     }),
     computed: {
         level() {
-            return this.list[this.selected][0];
+            if (this.selected == null) {
+                return 0;
+            } else {
+                return this.list[this.selected][0];
+            }
         },
         video() {
             if (!this.level.showcase) {
@@ -161,11 +201,30 @@ export default {
                     : this.level.verification
             );
         },
+        originalListWithIndex() {
+            return (this.list || []).map(([level, err], index) => ({
+                level,
+                err,
+                originalIndex: index,
+            }));
+        },
+        filteredListDisplay() {
+            if (!this.searchQuery.trim()) {
+                return this.originalListWithIndex;
+            }
+            const searchTerm = this.searchQuery.toLowerCase();
+            return (this.originalListWithIndex || []).filter(item => item.level?.name?.toLowerCase().includes(searchTerm.toLowerCase()));
+        },
     },
     async mounted() {
         // Hide loading spinner
         this.list = await fetchList();
         this.editors = await fetchEditors();
+        this.changelog = await fetchChangelog();
+        this.leDaily = await fetchdailylul();
+        if (Math.floor(Math.random() * 100) == 12) {
+            localStorage.setItem('purple', "true");
+        }
 
         // Error handling
         if (!this.list) {
