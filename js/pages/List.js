@@ -129,44 +129,37 @@ export default {
                     </template>
                     <h3>Submission Requirements</h3>
                     <p>
-                        Your level <strong>must</strong> be under 30 seconds.
+                        achieved the record without using hacks (CBF/CBS, FPS bypass allowed anywhere between 30-720 FPS)
                     </p>
                     <p>
-                        Level must be harder than the level at the lowest spot on the list.
+                        must show cheat indicator, if using a mod menu
                     </p>
                     <p>
-                        No inappropriate levels, as this includes NSFW levels/videos.
+                        achieved the record on the level that is listed on the site - please check the level ID before you submit a record
                     </p>
                     <p>
-                       Levels verified/beat with a cps cap will be placed separately.
+                        level must be up to 29 seconds long
                     </p>
                     <p>
-                        Levels verified/beat with a method outside alternating will be placed separately.
+                        must have audible or clicks/taps in the video. edited audio only does not count
                     </p>
                     <p>
-                        Secret ways are <strong>absolutely</strong> prohibited.
+                        the recording must have a previous attempt and entire death animation shown before the completion, unless the completion is on the first attempt. everyplay records are exempt from this
                     </p>
                     <p>
-                        Levels have to be 30fps Minimum cps is 10.
+                        must have sufficient amounts of brainrot, mod team accepts levels that have enough brainrot
                     </p>
                     <p>
-                        The difficulty must be spam.
+                        the recording must also show the player hit the endwall, or the completion will be invalidated.
                     </p>
                     <p>
-                        Noclip is allowed as long as you have 0 deaths or 100% Accuracy.
+                        not recommended to use secret routes or bug routes
                     </p>
                     <p>
-                        Clicks must be heard. Click Sounds aren't allowed, or medal overlay is allowed as well if u dont have a mic.
+                        do not use easy modes, only a record of the unmodified level qualifies
                     </p>
                     <p>
-We are not accepting Layouts as verifications, Effort on yours levels
-                   </p>
-                    <p>
-
-                        You have to be on the latest version of Geometry Dash in order to get your completions/verifications accepted.
-                    </p>
-                      <p>
-                        When submitting if you submit more than one level at a time it is prefered that you upload in a compilation
+                        once a level falls into The Basement, records will stop being accepted for the level
                     </p>
                 </div>
             </div>
